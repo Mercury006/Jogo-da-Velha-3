@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Maven+Pro:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    
+    background: radial-gradient(circle, #1f0e29, #341343);
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: aliceblue;
+}
+.board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    gap: 8px;
+    column-gap: 10px;
+    grid-column-start: auto;
+    z-index: -1;
+    /* background: rgba(250, 250, 250, 0.046);
+    box-shadow: 0px 8px 32px 0 rgba(135, 31, 92, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 700px;
+    width: 700px; */
+}
+
+.cell {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ece2e2;
+    font-size: 24px;
+    cursor: pointer;
+}
+h1{
+    margin-top: 1em;
+    margin: .3em;
+    font-size: 3.5em;
+}
+h2{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background: linear-gradient(90deg,#46025986, #77059686, #46025979);
+    backdrop-filter: blur(30px);
+    z-index: 1;
+    border-radius: 2em;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    position: absolute;
+    top: -20px;
+    right: -3px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 3em;
+    margin: .5em;
+}

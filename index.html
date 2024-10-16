@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Velha 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Jogo da Velha 3</h1>
+
+        <div class="modal" id="mymodal">
+            <div class="modal-content">
+                <h2>Regras</h2><br>
+                <p>Neste jogo, as primeiras 3 rodadas para cada jogador são jogadas normalmente. Após isso, os
+                    jogadores devem
+                    trocar as peças de lugares por lugares ausentes. O objetivo é conseguir uma linha reta com suas
+                    peças
+                    (horizontal, vertical ou diagonal).</p>
+            </div>
+            <span class="close" id="closeBtn">&times;</span>
+        </div>
+
+        <div class="board" id="board">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('mymodal');
+            var modalContent = document.getElementById('modal-content')
+            var closeBtn = document.getElementById('closeBtn');
+
+            modal.style.display = 'block';
+
+            closeBtn.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+
+        function modal() {
+            var modal = document.getElementById('mymodal');
+            var modalContent = document.getElementById('modal-content')
+            var closeBtn = document.getElementById('closeBtn');
+            modal.style.display = "block";
+            modalContent.innerHTML
+        }
+
+        const board = document.getElementById("board");
+        const cells = document.querySelectorAll(".cell");
+        let currentPlayer = "X";
+        let moves = 0;
+        let gameActive = true;
+        let selectedCell = null;
+
+        function checkWin() {
+            const winningCombinations = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            for (const combination of winningCombinations) {
+                const [a, b, c] = combination;
+                if (cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent) {
+                    gameActive = false;
+                    modal();
+                }
+            }
+        }
+
+
+        function handleCellClick(cell) {
+            if (gameActive) {
+                if (moves < 6) {
+                    if (cell.textContent === "") {
+                        cell.textContent = currentPlayer;
+                        moves++;
+                        checkWin(); // Movido para após a atualização da célula
+                        currentPlayer = currentPlayer === "X" ? "O" : "X";
+                    }
+                } else {
+                    if (selectedCell === null) {
+                        if (cell.textContent === currentPlayer) {
+                            selectedCell = cell;
+                            selectedCell.style.backgroundColor = "#eee";
+                        }
+                    } else {
+                        if (cell.textContent === "" && cell !== selectedCell) {
+                            cell.textContent = selectedCell.textContent;
+                            selectedCell.textContent = "";
+                            selectedCell.style.backgroundColor = "transparent";
+                            currentPlayer = currentPlayer === "X" ? "O" : "X";
+                            checkWin(); // Movido para após a atualização da célula
+                        }
+                        selectedCell.style.backgroundColor = "transparent";
+                        selectedCell = null;
+                    }
+                }
+            }
+        }
+
+
+        cells.forEach(cell => {
+            cell.addEventListener("click", () => {
+                handleCellClick(cell);
+            });
+        });
+    </script>
+</body>
+
+</html>

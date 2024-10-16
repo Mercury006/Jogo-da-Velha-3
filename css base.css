@@ -1,0 +1,196 @@
+  @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Maven+Pro:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(circle, #0F0614, #290d36);
+    color: #EBEAEB;
+    /* font-family: 'Maven Pro', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    overflow-x: hidden;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+    margin: 8em;
+}
+p{
+    text-align: center;
+}
+.title{
+    color: #63038C;
+    margin: 1em;
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    width: 70%;
+}
+.input, .button{
+    font-size: 1em;
+    font-weight: bold;
+    border-style: none;
+    margin: 1em;
+    padding: .60em;
+    padding-inline: 2em;
+    border-radius: 2em;
+    background-blend-mode:color-burn;
+    background: linear-gradient(90deg,#460259, #5A0273);
+    opacity: .8;
+    color: #EBEAEB;
+    text-align: center;
+    outline: #0F0614;
+    backdrop-filter: blur(20px);
+    transition: ease-in .2s;
+
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.input:focus{
+    background-color: #110616;
+    transition: ease-in .4s;
+}
+.input:focus::placeholder{
+    opacity: 0;
+}
+.button:active{
+    background-color: #0F0614;
+}
+.input::placeholder{
+    color:#797979d8;
+    font-size: larger;
+    font-weight: bold;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  th {
+    background: linear-gradient(90deg,#460259, #5A0273, #460259);
+    color: #EBEAEB;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  td {
+    padding: 8px;
+  }
+
+  .table-container {
+    max-height: 300px; 
+    width: 100%;
+    overflow: auto;
+    border-radius: 10px; /* Mantém o mesmo raio de borda do seu estilo de tabela */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 2;
+  }
+  .table-container::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb {
+    background-color: #63038C;
+    border-radius: 6px; 
+  }
+  
+  /* Altera a cor do fundo da barra de rolagem */
+  .table-container::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+  }
+  .table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #460259;
+  }
+
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #63038C;
+  border-radius: 6px; 
+}
+
+/* Altera a cor do fundo da barra de rolagem */
+body::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #460259;
+}
+
+@media (min-width: 1024px) {
+    .container {
+      margin: 8em;
+    }
+    .row {
+      width: 70%;
+    }
+    .table-container {
+      max-height: 300px;
+    }
+  }
+  
+  /* Estilos para telas médias (por exemplo, tablets) */
+  @media (max-width: 1023px) {
+    .container {
+      margin: 4em;
+    }
+    .row {
+      width: 90%;
+    }
+    .table-container {
+      max-height: 200px;
+    }
+  }
+  
+  /* Estilos para telas pequenas (por exemplo, smartphones) */
+  @media (max-width: 767px) {
+    .container {
+      margin: 2em;
+    }
+    .row {
+      width: 100%;
+      flex-direction: column;
+    }
+    .table-container {
+      max-height: 150px;
+    }
+    .input, .button {
+      font-size: 0.9em;
+    }
+    th, td {
+      font-size: 0.9em;
+    }
+  }
